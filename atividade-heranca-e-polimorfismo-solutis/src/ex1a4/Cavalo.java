@@ -2,8 +2,8 @@ package ex1a4;
 
 public class Cavalo extends Animal {
 
-    public Cavalo(String nome, int idade) {
-        super(nome, idade);
+    public Cavalo(String nome,String tipo, int idade) {
+        super(nome, tipo, idade);
     }
 
     @Override

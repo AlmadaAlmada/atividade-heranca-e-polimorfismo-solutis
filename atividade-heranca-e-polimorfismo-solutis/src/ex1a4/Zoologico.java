@@ -5,7 +5,7 @@ public class Zoologico {
     private Animal[] jaulas;
 
     public Zoologico() {
-        jaulas = new Animal[10]; // Array com 10 jaulas
+        jaulas = new Animal[10];
     }
 
     public void adicionarAnimal(int index, Animal animal) {
@@ -20,10 +20,9 @@ public class Zoologico {
         for (int i = 0; i < jaulas.length; i++) {
             Animal animal = jaulas[i];
             if (animal != null) {
-                System.out.println("Jaula " + (i + 1) + ":");
+                System.out.println("Jaula " + (i + 1) + ", "+ animal.getNome() +":");
                 animal.emitirSom();
 
-                // Verifica se o animal pode correr e faz com que ele corra
                 if (animal instanceof Cachorro || animal instanceof Cavalo) {
                     if (animal instanceof Cachorro) {
                         ((Cachorro) animal).correr();
@@ -34,6 +33,7 @@ public class Zoologico {
             } else {
                 System.out.println("Jaula " + (i + 1) + " está vazia.");
             }
+            System.out.println();
         }
     }
 }
