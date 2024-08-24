@@ -1,8 +1,8 @@
-package ex5a7;
+package ex5a11;
 
 public class FuncionarioEnsinoMedio extends FuncionarioEnsinoBasico {
-    public FuncionarioEnsinoMedio(String nome, int codigoFuncional, String escola) {
-        super(nome, codigoFuncional, escola);
+    public FuncionarioEnsinoMedio(String nome, int codigoFuncional, String escola, Comissao comissao) {
+        super(nome, codigoFuncional, escola, comissao);
     }
 
     @Override

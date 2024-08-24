@@ -1,10 +1,10 @@
-package ex5a7;
+package ex5a11;
 
 public class FuncionarioGraduado extends FuncionarioEnsinoMedio {
     private String universidade;
 
-    public FuncionarioGraduado(String nome, int codigoFuncional, String escola, String universidade) {
-        super(nome, codigoFuncional, escola);
+    public FuncionarioGraduado(String nome, int codigoFuncional, String escola, String universidade, Comissao comissao) {
+        super(nome, codigoFuncional, escola, comissao);
         this.universidade = universidade;
     }
 
