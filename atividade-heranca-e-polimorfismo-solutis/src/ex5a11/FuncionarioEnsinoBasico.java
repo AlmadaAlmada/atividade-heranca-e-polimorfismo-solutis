@@ -13,7 +13,11 @@ public class FuncionarioEnsinoBasico extends Funcionario {
     }
 
     @Override
-    public double calcularRenda() {
-        return super.calcularRenda() * 1.10;
+    public double calcularRendaBase() {
+        return super.calcularRendaBase() * 1.10;
+    }
+
+    public double calcularRendaComissao() {
+        return super.calcularRendaComissao();
     }
 }

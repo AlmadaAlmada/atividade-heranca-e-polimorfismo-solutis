@@ -8,6 +8,7 @@ public class Funcionario {
     public Funcionario(String nome, int codigoFuncional, Comissao comissao) {
         this.nome = nome;
         this.codigoFuncional = codigoFuncional;
+        this.comissao = comissao;
     }
 
     public String getNome() {
@@ -22,18 +23,21 @@ public class Funcionario {
         return comissao;
     }
 
-    public double calcularRenda() {
+    public double calcularRendaBase() {
         double rendaBase = 1000.00;
-        if (comissao != null) {
-            rendaBase += comissao.getValorComissao();
-        }
         return rendaBase;
+    }
+
+    public double calcularRendaComissao() {
+        double rendaComissao = calcularRendaBase();
+        rendaComissao += comissao.getValorComissao();
+        return rendaComissao;
     }
 
     @Override
     public String toString() {
-        return "Nome: " + nome + ", Comissão: R$ " + (comissao != null ? comissao.getValorComissao() : 0.00) +
-                ", Salário Total: R$ " + calcularRenda();
+        return "Nome: " + nome + ", Salario base: R$ " + calcularRendaBase() + ", Comissão: R$ " +
+                (comissao != null ? comissao.getValorComissao() : 0.00) + ", Salário Total: R$ " + calcularRendaComissao();
     }
 }
 

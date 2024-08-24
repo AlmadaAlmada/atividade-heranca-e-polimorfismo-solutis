@@ -3,10 +3,10 @@ package ex5a11;
 public class Empresa {
     public static void main(String[] args) {
 
-        Funcionario funcionarioSemEscolaridade = new Funcionario("FUNCIONARIO MODELO", 111, new Vendedor());
-        Funcionario funcionarioComEnsinoBasico = new FuncionarioEnsinoBasico("FUNCIONARIO MODELO", 222, "Escola MODELO", new Vendedor());
-        Funcionario funcionarioComEnsinoMedio = new FuncionarioEnsinoMedio("FUNCIONARIO MODELO", 333, "Escola MODELO", new Vendedor());
-        Funcionario funcionarioComGraduacao = new FuncionarioGraduado("FUNCIONARIO MODELO", 444, "Escola MODELO", "Universidade MODELO", new Vendedor());
+        Funcionario funcionarioSemEscolaridade = new Funcionario("FUNCIONARIO MODELO", 111, new semComissao());
+        Funcionario funcionarioComEnsinoBasico = new FuncionarioEnsinoBasico("FUNCIONARIO MODELO", 222, "Escola MODELO", new semComissao());
+        Funcionario funcionarioComEnsinoMedio = new FuncionarioEnsinoMedio("FUNCIONARIO MODELO", 333, "Escola MODELO", new semComissao());
+        Funcionario funcionarioComGraduacao = new FuncionarioGraduado("FUNCIONARIO MODELO", 444, "Escola MODELO", "Universidade MODELO", new semComissao());
 
         Funcionario[] funcionarios = new Funcionario[10];
 
@@ -33,7 +33,7 @@ public class Empresa {
         double totalVendedores = 0;
 
         for (Funcionario f : funcionarios) {
-            double salario = f.calcularRenda();
+            double salario = f.calcularRendaBase();
             totalSalarios += salario;
 
             if (f instanceof FuncionarioGraduado) {
@@ -44,32 +44,36 @@ public class Empresa {
                 totalEnsinoBasico += salario;
             }
 
-            totalSalariosComissoes += salario;
+            double salarioComissao = f.calcularRendaComissao();
+            totalSalariosComissoes += salarioComissao;
 
             if (f.getComissao() instanceof Gerente) {
-                totalGerentes += salario;
+                totalGerentes += salarioComissao;
             } else if (f.getComissao() instanceof Supervisor) {
-                totalSupervisores += salario;
+                totalSupervisores += salarioComissao;
             } else if (f.getComissao() instanceof Vendedor) {
-                totalVendedores += salario;
+                totalVendedores += salarioComissao;
             }
         }
 
-        System.out.println("Custo com um funcionário sem escolaridade: " + funcionarioSemEscolaridade.calcularRenda());
-        System.out.println("Custo com um funcionário com ensino básico: " + funcionarioComEnsinoBasico.calcularRenda());
-        System.out.println("Custo com um funcionário com ensino médio: " + funcionarioComEnsinoMedio.calcularRenda());
-        System.out.println("Custo com um funcionário graduado: " + funcionarioComGraduacao.calcularRenda());
-        System.out.println("Custo total com salários: R$ " + totalSalarios);
-        System.out.println("Custo com funcionários de ensino básico: R$ " + totalEnsinoBasico);
-        System.out.println("Custo com funcionários de ensino médio: R$ " + totalEnsinoMedio);
-        System.out.println("Custo com funcionários graduados: R$ " + totalGraduacao);
+        System.out.println("Custo com um funcionário sem escolaridade, sem comissão: " + funcionarioSemEscolaridade.calcularRendaComissao());
+        System.out.println("Custo com um funcionário com ensino básico, sem comisssão: " + funcionarioComEnsinoBasico.calcularRendaComissao());
+        System.out.println("Custo com um funcionário com ensino médio, sem comissão: " + funcionarioComEnsinoMedio.calcularRendaComissao());
+        System.out.println("Custo com um funcionário graduado, sem comissão: " + funcionarioComGraduacao.calcularRendaComissao());
         System.out.println();
-        System.out.println("Custo total com salários com comissões: R$ " + totalSalariosComissoes);
-        System.out.println("Custo com Gerentes: R$ " + totalGerentes);
-        System.out.println("Custo com Supervisores: R$ " + totalSupervisores);
-        System.out.println("Custo com Vendedores: R$ " + totalVendedores);
+        System.out.println("Custo com os funcionários de ensino básico sem comissão da empresa: R$ " + totalEnsinoBasico);
+        System.out.println("Custo com os funcionários de ensino médio sem comissão da empressa: R$ " + totalEnsinoMedio);
+        System.out.println("Custo com os funcionários graduados sem comissão da empresa: R$ " + totalGraduacao);
+        System.out.println("Custo total com salários sem comissão: R$ " + totalSalarios);
+        System.out.println();
+        System.out.println("Custo com os gerentes da empresa: R$ " + totalGerentes);
+        System.out.println("Custo com os supervisores da empresa: R$ " + totalSupervisores);
+        System.out.println("Custo com os vendedores da empresa: R$ " + totalVendedores);
+        System.out.println("Custo total dos salários com comissões da empresa: R$ " + totalSalariosComissoes);
+        System.out.println();
         System.out.println();
 
+        System.out.println("funcionários da empresa:");
         for (Funcionario f : funcionarios) {
             System.out.println(f);
         }
