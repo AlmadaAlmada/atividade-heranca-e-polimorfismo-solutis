@@ -20,7 +20,7 @@ public class Empresa {
         funcionarios[6] = new FuncionarioEnsinoMedio("Fernanda", 7, "Escola G", new Vendedor());
         funcionarios[7] = new FuncionarioGraduado("Roberta", 8, "Escola H", "Universidade Tecnológica Federal do Paraná", new Vendedor());
         funcionarios[8] = new FuncionarioGraduado("Felipe", 9, "Escola I", "Universidade Tecnológica Federal do Paraná", new Vendedor());
-        funcionarios[9] = new FuncionarioEnsinoBasico("Bruna", 10, "Escola J", new Supervisor());
+        funcionarios[9] = new FuncionarioEnsinoBasico("Bruna", 10, "Escola J", new Vendedor());
 
         double totalSalarios = 0;
         double totalEnsinoBasico = 0;
